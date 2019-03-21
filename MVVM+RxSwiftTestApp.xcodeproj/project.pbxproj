@@ -13,6 +13,11 @@
 		187EB9012242AA3A00A94E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187EB9002242AA3A00A94E4A /* Assets.xcassets */; };
 		187EB9042242AA3A00A94E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187EB9022242AA3A00A94E4A /* LaunchScreen.storyboard */; };
 		187EB90F2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EB90E2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift */; };
+		188CC055224429DD008C6DC0 /* CountriesTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC054224429DD008C6DC0 /* CountriesTableViewModel.swift */; };
+		188CC05722442AE3008C6DC0 /* CountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC05622442AE3008C6DC0 /* CountryCellViewModel.swift */; };
+		188CC05A22442BD4008C6DC0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC05922442BD4008C6DC0 /* ErrorDialog.swift */; };
+		188CC05D22442C43008C6DC0 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC05C22442C43008C6DC0 /* CountryTableViewCell.swift */; };
+		188CC06222442FE6008C6DC0 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC06122442FE6008C6DC0 /* CountriesViewController.swift */; };
 		18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E122438E2100713DC5 /* CountryDTO.swift */; };
 		18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E422438E6200713DC5 /* CountriesQuery.swift */; };
 		18D610E922438F2300713DC5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E822438F2300713DC5 /* Country.swift */; };
@@ -43,6 +48,11 @@
 		187EB90A2242AA3B00A94E4A /* MVVM+RxSwiftTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM+RxSwiftTestAppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		187EB90E2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_RxSwiftTestAppTests.swift; sourceTree = "<group>"; };
 		187EB9102242AA3B00A94E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188CC054224429DD008C6DC0 /* CountriesTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewModel.swift; sourceTree = "<group>"; };
+		188CC05622442AE3008C6DC0 /* CountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellViewModel.swift; sourceTree = "<group>"; };
+		188CC05922442BD4008C6DC0 /* ErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
+		188CC05C22442C43008C6DC0 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		188CC06122442FE6008C6DC0 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		18D610E122438E2100713DC5 /* CountryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTO.swift; sourceTree = "<group>"; };
 		18D610E422438E6200713DC5 /* CountriesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesQuery.swift; sourceTree = "<group>"; };
 		18D610E822438F2300713DC5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -99,10 +109,14 @@
 		187EB8F82242AA3A00A94E4A /* MVVM+RxSwiftTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				188CC06022442FBE008C6DC0 /* ViewControllers */,
+				188CC05B22442C1F008C6DC0 /* View */,
+				188CC053224429AE008C6DC0 /* ViewModels */,
 				18D610EC2243902E00713DC5 /* Repositories */,
 				18D610E722438F1000713DC5 /* Models */,
 				18D610E622438E8B00713DC5 /* Mappers */,
 				18D610DF22438DDB00713DC5 /* API */,
+				188CC05822442BB6008C6DC0 /* Helpers */,
 				187EB8F92242AA3A00A94E4A /* AppDelegate.swift */,
 				187EB8FB2242AA3A00A94E4A /* ViewController.swift */,
 				187EB8FD2242AA3A00A94E4A /* Main.storyboard */,
@@ -120,6 +134,39 @@
 				187EB9102242AA3B00A94E4A /* Info.plist */,
 			);
 			path = "MVVM+RxSwiftTestAppTests";
+			sourceTree = "<group>";
+		};
+		188CC053224429AE008C6DC0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				188CC054224429DD008C6DC0 /* CountriesTableViewModel.swift */,
+				188CC05622442AE3008C6DC0 /* CountryCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		188CC05822442BB6008C6DC0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				188CC05922442BD4008C6DC0 /* ErrorDialog.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		188CC05B22442C1F008C6DC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				188CC05C22442C43008C6DC0 /* CountryTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		188CC06022442FBE008C6DC0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				188CC06122442FE6008C6DC0 /* CountriesViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		18D610DF22438DDB00713DC5 /* API */ = {
@@ -378,12 +425,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188CC055224429DD008C6DC0 /* CountriesTableViewModel.swift in Sources */,
 				187EB8FC2242AA3A00A94E4A /* ViewController.swift in Sources */,
 				18D610EB22438F4600713DC5 /* CountryMapper.swift in Sources */,
+				188CC05D22442C43008C6DC0 /* CountryTableViewCell.swift in Sources */,
 				18D610EE2243905200713DC5 /* CountriesRepository.swift in Sources */,
+				188CC05722442AE3008C6DC0 /* CountryCellViewModel.swift in Sources */,
 				18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */,
 				18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */,
 				18D610E922438F2300713DC5 /* Country.swift in Sources */,
+				188CC06222442FE6008C6DC0 /* CountriesViewController.swift in Sources */,
+				188CC05A22442BD4008C6DC0 /* ErrorDialog.swift in Sources */,
 				187EB8FA2242AA3A00A94E4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
