@@ -13,6 +13,11 @@
 		187EB9012242AA3A00A94E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187EB9002242AA3A00A94E4A /* Assets.xcassets */; };
 		187EB9042242AA3A00A94E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187EB9022242AA3A00A94E4A /* LaunchScreen.storyboard */; };
 		187EB90F2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EB90E2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift */; };
+		18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E122438E2100713DC5 /* CountryDTO.swift */; };
+		18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E422438E6200713DC5 /* CountriesQuery.swift */; };
+		18D610E922438F2300713DC5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E822438F2300713DC5 /* Country.swift */; };
+		18D610EB22438F4600713DC5 /* CountryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610EA22438F4600713DC5 /* CountryMapper.swift */; };
+		18D610EE2243905200713DC5 /* CountriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610ED2243905200713DC5 /* CountriesRepository.swift */; };
 		1AF8BD455567464A517A8473 /* Pods_MVVM_RxSwiftTestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93978476ED8D7EC4F4459158 /* Pods_MVVM_RxSwiftTestAppTests.framework */; };
 		BDEDA4D97DC0485A6063D79B /* Pods_MVVM_RxSwiftTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C1E4CC907EBB1AF309B880 /* Pods_MVVM_RxSwiftTestApp.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +43,11 @@
 		187EB90A2242AA3B00A94E4A /* MVVM+RxSwiftTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM+RxSwiftTestAppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		187EB90E2242AA3B00A94E4A /* MVVM_RxSwiftTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_RxSwiftTestAppTests.swift; sourceTree = "<group>"; };
 		187EB9102242AA3B00A94E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D610E122438E2100713DC5 /* CountryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTO.swift; sourceTree = "<group>"; };
+		18D610E422438E6200713DC5 /* CountriesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesQuery.swift; sourceTree = "<group>"; };
+		18D610E822438F2300713DC5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		18D610EA22438F4600713DC5 /* CountryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryMapper.swift; sourceTree = "<group>"; };
+		18D610ED2243905200713DC5 /* CountriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesRepository.swift; sourceTree = "<group>"; };
 		35BD5AB5D8EE22F3A919A824 /* Pods-MVVM+RxSwiftTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM+RxSwiftTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVM+RxSwiftTestAppTests/Pods-MVVM+RxSwiftTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		43C1E4CC907EBB1AF309B880 /* Pods_MVVM_RxSwiftTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwiftTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6028ADD6DE2736632543B69B /* Pods-MVVM+RxSwiftTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM+RxSwiftTestApp.release.xcconfig"; path = "Target Support Files/Pods-MVVM+RxSwiftTestApp/Pods-MVVM+RxSwiftTestApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +99,10 @@
 		187EB8F82242AA3A00A94E4A /* MVVM+RxSwiftTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				18D610EC2243902E00713DC5 /* Repositories */,
+				18D610E722438F1000713DC5 /* Models */,
+				18D610E622438E8B00713DC5 /* Mappers */,
+				18D610DF22438DDB00713DC5 /* API */,
 				187EB8F92242AA3A00A94E4A /* AppDelegate.swift */,
 				187EB8FB2242AA3A00A94E4A /* ViewController.swift */,
 				187EB8FD2242AA3A00A94E4A /* Main.storyboard */,
@@ -108,6 +122,55 @@
 			path = "MVVM+RxSwiftTestAppTests";
 			sourceTree = "<group>";
 		};
+		18D610DF22438DDB00713DC5 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				18D610E322438E4100713DC5 /* Query */,
+				18D610E022438DF700713DC5 /* DTO */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		18D610E022438DF700713DC5 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				18D610E122438E2100713DC5 /* CountryDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		18D610E322438E4100713DC5 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				18D610E422438E6200713DC5 /* CountriesQuery.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		18D610E622438E8B00713DC5 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				18D610EA22438F4600713DC5 /* CountryMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		18D610E722438F1000713DC5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18D610E822438F2300713DC5 /* Country.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		18D610EC2243902E00713DC5 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				18D610ED2243905200713DC5 /* CountriesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		273A148FE2FCB0B3F0FD5795 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +179,6 @@
 				35BD5AB5D8EE22F3A919A824 /* Pods-MVVM+RxSwiftTestAppTests.debug.xcconfig */,
 				9CAE90F84B3CB764F05086D3 /* Pods-MVVM+RxSwiftTestAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -317,6 +379,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				187EB8FC2242AA3A00A94E4A /* ViewController.swift in Sources */,
+				18D610EB22438F4600713DC5 /* CountryMapper.swift in Sources */,
+				18D610EE2243905200713DC5 /* CountriesRepository.swift in Sources */,
+				18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */,
+				18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */,
+				18D610E922438F2300713DC5 /* Country.swift in Sources */,
 				187EB8FA2242AA3A00A94E4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
