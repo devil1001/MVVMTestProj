@@ -13,10 +13,10 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     @IBOutlet var tableView: UITableView!
     
     let viewModel: CountriesTableViewModel = CountriesTableViewModel()
-    
     private let disposeBag = DisposeBag()
+    private let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         setupCellTapHandling()
@@ -25,6 +25,7 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     
     func bindViewModel() {
         viewModel.countryCells.bind(to: self.tableView.rx.items) { tableView, index, element in
+            self.effectView.removeFromSuperview()
             let indexPath = IndexPath(item: index, section: 0)
             switch element {
             case .normal(let viewModel):
@@ -62,6 +63,7 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     }
     
     private func setLoadingHud(visible: Bool) {
+        showLoadingIndicator(on: effectView)
     }
     
     private func setupCellTapHandling() {

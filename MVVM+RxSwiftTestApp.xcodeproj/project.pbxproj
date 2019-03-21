@@ -18,6 +18,7 @@
 		188CC05A22442BD4008C6DC0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC05922442BD4008C6DC0 /* ErrorDialog.swift */; };
 		188CC05D22442C43008C6DC0 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC05C22442C43008C6DC0 /* CountryTableViewCell.swift */; };
 		188CC06222442FE6008C6DC0 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC06122442FE6008C6DC0 /* CountriesViewController.swift */; };
+		188CC064224441DA008C6DC0 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CC063224441DA008C6DC0 /* LoadingIndicator.swift */; };
 		18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E122438E2100713DC5 /* CountryDTO.swift */; };
 		18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E422438E6200713DC5 /* CountriesQuery.swift */; };
 		18D610E922438F2300713DC5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D610E822438F2300713DC5 /* Country.swift */; };
@@ -53,6 +54,7 @@
 		188CC05922442BD4008C6DC0 /* ErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		188CC05C22442C43008C6DC0 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		188CC06122442FE6008C6DC0 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		188CC063224441DA008C6DC0 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		18D610E122438E2100713DC5 /* CountryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTO.swift; sourceTree = "<group>"; };
 		18D610E422438E6200713DC5 /* CountriesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesQuery.swift; sourceTree = "<group>"; };
 		18D610E822438F2300713DC5 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				188CC05922442BD4008C6DC0 /* ErrorDialog.swift */,
+				188CC063224441DA008C6DC0 /* LoadingIndicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				18D610EB22438F4600713DC5 /* CountryMapper.swift in Sources */,
 				188CC05D22442C43008C6DC0 /* CountryTableViewCell.swift in Sources */,
 				18D610EE2243905200713DC5 /* CountriesRepository.swift in Sources */,
+				188CC064224441DA008C6DC0 /* LoadingIndicator.swift in Sources */,
 				188CC05722442AE3008C6DC0 /* CountryCellViewModel.swift in Sources */,
 				18D610E522438E6200713DC5 /* CountriesQuery.swift in Sources */,
 				18D610E222438E2100713DC5 /* CountryDTO.swift in Sources */,
