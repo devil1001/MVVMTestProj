@@ -13,4 +13,5 @@ struct Country {
     var capital: String
     var population: Int
     var borders: [String]
+    var cioc: String?
 }

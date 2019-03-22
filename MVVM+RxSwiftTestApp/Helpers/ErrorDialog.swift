@@ -16,7 +16,7 @@ struct AlertAction {
 struct ErrorAlert {
     let title: String
     let message: String?
-    let action: AlertAction
+    let action: AlertAction?
 }
 
 protocol ErrorDialogPresenter {
@@ -28,9 +28,9 @@ extension ErrorDialogPresenter where Self: UIViewController {
         let alertController = UIAlertController(title: alert.title,
                                                 message: alert.message,
                                                 preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: alert.action.buttonTitle,
+        alertController.addAction(UIAlertAction(title: alert.action?.buttonTitle,
                                                 style: .default,
-                                                handler: { _ in alert.action.handler?() }))
+                                                handler: { _ in alert.action?.handler?() }))
         self.present(alertController, animated: true, completion: nil)
     }
 }

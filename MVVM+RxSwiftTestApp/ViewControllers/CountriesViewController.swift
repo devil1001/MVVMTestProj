@@ -15,6 +15,7 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     let viewModel: CountriesTableViewModel = CountriesTableViewModel()
     private let disposeBag = DisposeBag()
     private let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    private var selectedCountry: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     
     func bindViewModel() {
         viewModel.countryCells.bind(to: self.tableView.rx.items) { tableView, index, element in
-            self.effectView.removeFromSuperview()
             let indexPath = IndexPath(item: index, section: 0)
             switch element {
             case .normal(let viewModel):
@@ -33,11 +33,6 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
                     return UITableViewCell()
                 }
                 cell.viewModel = viewModel
-                return cell
-            case .error(let message):
-                let cell = UITableViewCell()
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.text = message
                 return cell
             case .empty:
                 let cell = UITableViewCell()
@@ -63,7 +58,11 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     }
     
     private func setLoadingHud(visible: Bool) {
-        showLoadingIndicator(on: effectView)
+        if visible {
+            showLoadingIndicator(on: effectView)
+        } else {
+            effectView.removeFromSuperview()
+        }
     }
     
     private func setupCellTapHandling() {
@@ -72,7 +71,8 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
             .modelSelected(CountryCellType.self)
             .subscribe(
                 onNext: { [weak self] countryCellType in
-                    if case .normal(_) = countryCellType {
+                    if case let .normal(viewModel) = countryCellType {
+                        self?.selectedCountry = viewModel.name
                         self?.performSegue(withIdentifier: "CountryDetails", sender: self)
                     }
                     if let selectedRowIndexPath = self?.tableView.indexPathForSelectedRow {
@@ -83,7 +83,22 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
             .disposed(by: disposeBag)
     }
     
-    public override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "CountryDetails",
+            let destinationViewController = segue.destination as? CountryDetailsViewController,
+            let selectedCountry = selectedCountry else {
+                return
+        }
+        destinationViewController.viewModel = CountryDetailsViewModel(countryName: selectedCountry,
+                                                                      countriesRepo: viewModel.countriesRepo)
+        destinationViewController
+            .updateFriends
+            .asObserver()
+            .subscribe(
+                onNext: { [weak self] () in
+                    self?.viewModel.getCountries()
+                }
+            )
+            .disposed(by: destinationViewController.disposeBag)
     }
 }

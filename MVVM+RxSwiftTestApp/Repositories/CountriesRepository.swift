@@ -17,8 +17,9 @@ fileprivate enum CountriesAPI {
 }
 
 final class CountriesRepository {
-    fileprivate let provider = MoyaProvider<CountriesQuery>()
-    fileprivate let apiType: CountriesAPI = .CountriesQuery
+    private let provider = MoyaProvider<CountriesQuery>()
+    private let apiType: CountriesAPI = .CountriesQuery
+    private var cachedCountries: [Country] = []
     
     func getCountries() -> Observable<[Country]> {
         return provider
@@ -26,8 +27,25 @@ final class CountriesRepository {
             .request(.all)
             .mapArray(CountryDTO.self)
             .asObservable()
-            .map { countries in
-                return countries.map { CountryMapper.map(from: $0) }
+            .map { [weak self] countriesDTO in
+                let countries = countriesDTO.map { CountryMapper.map(from: $0) }
+                self?.cachedCountries = countries
+                return countries
         }
+    }
+    
+    func getDetails(for countryName: String) -> Observable<Country> {
+        return provider
+            .rx
+            .request(.name(countryName: countryName))
+            .mapArray(CountryDTO.self)
+            .asObservable()
+            .map { countries in
+                return CountryMapper.map(from: countries.first(where: { $0.name == countryName }) ?? CountryDTO())
+        }
+    }
+    
+    func getCountryName(by cioc: String) -> String? {
+        return cachedCountries.first(where: { $0.cioc == cioc })?.name
     }
 }

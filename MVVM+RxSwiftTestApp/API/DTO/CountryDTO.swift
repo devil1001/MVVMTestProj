@@ -14,6 +14,7 @@ struct CountryDTO {
     var capital: String?
     var population: Int?
     var borders: [String] = []
+    var cioc: String?
 }
 
 extension CountryDTO: Mappable {
@@ -25,5 +26,6 @@ extension CountryDTO: Mappable {
         capital <- map["capital"]
         population <- map["population"]
         borders <- map["borders"]
+        cioc <- map["cioc"]
     }
 }

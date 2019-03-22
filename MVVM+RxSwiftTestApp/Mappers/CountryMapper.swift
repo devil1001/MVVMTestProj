@@ -13,6 +13,7 @@ final class CountryMapper {
         return Country(name: dto.name ?? "",
                        capital: dto.capital ?? "",
                        population: dto.population ?? 0,
-                       borders: dto.borders)
+                       borders: dto.borders,
+                       cioc: dto.cioc)
     }
 }

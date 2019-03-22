@@ -12,7 +12,6 @@ import RxCocoa
 
 enum CountryCellType {
     case normal(cellViewModel: CountryCellViewModel)
-    case error(message: String)
     case empty
 }
 
@@ -57,7 +56,10 @@ final class CountriesTableViewModel {
                 },
                 onError: { [weak self] error in
                     self?.loadInProgress.accept(false)
-                    self?.cells.accept([.error(message: "Loading failed, check network connection")])
+                    let okAlert = ErrorAlert(title: "Could not connect to server.",
+                                             message: "Check your network and try again later.",
+                                             action: AlertAction(buttonTitle: "OK", handler: nil))
+                    self?.onShowError.onNext(okAlert)
                 }
             )
             .disposed(by: disposeBag)
