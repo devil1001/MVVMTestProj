@@ -45,7 +45,7 @@ final class CountriesRepository {
         }
     }
     
-    func getCountryName(by cioc: String) -> String? {
-        return cachedCountries.first(where: { $0.cioc == cioc })?.name
+    func getCountryName(by cioc: String) -> String {
+        return cachedCountries.first(where: { $0.cioc == cioc })?.name ?? cioc
     }
 }

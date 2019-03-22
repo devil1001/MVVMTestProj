@@ -18,7 +18,7 @@ final class CountryDetailsViewController: UIViewController, ErrorDialogPresenter
     @IBOutlet weak var currencyLabel: UILabel!
     
     var viewModel: CountryDetailsViewModel?
-    var updateFriends = PublishSubject<Void>()
+    var updateCountries = PublishSubject<Void>()
     let disposeBag = DisposeBag()
     private let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
@@ -31,7 +31,7 @@ final class CountryDetailsViewController: UIViewController, ErrorDialogPresenter
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        updateFriends.onCompleted()
+        updateCountries.onCompleted()
         super.viewWillDisappear(animated)
     }
     
@@ -44,7 +44,7 @@ final class CountryDetailsViewController: UIViewController, ErrorDialogPresenter
         bind(label: capitalLabel, to: viewModel.capital)
         bind(label: populationLabel, to: viewModel.population)
         bind(label: bordersLabel, to: viewModel.borders)
-        bind(label: currencyLabel, to: viewModel.capital)
+        bind(label: currencyLabel, to: viewModel.currencies)
         
         viewModel
             .onShowLoadingHud
@@ -56,7 +56,7 @@ final class CountryDetailsViewController: UIViewController, ErrorDialogPresenter
             .onNavigateBack
             .subscribe(
                 onNext: { [weak self] in
-                    self?.updateFriends.onNext(())
+                    self?.updateCountries.onNext(())
                     let _ = self?.navigationController?.popViewController(animated: true)
                 }
             ).disposed(by: disposeBag)

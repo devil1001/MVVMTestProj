@@ -92,7 +92,7 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
         destinationViewController.viewModel = CountryDetailsViewModel(countryName: selectedCountry,
                                                                       countriesRepo: viewModel.countriesRepo)
         destinationViewController
-            .updateFriends
+            .updateCountries
             .asObserver()
             .subscribe(
                 onNext: { [weak self] () in

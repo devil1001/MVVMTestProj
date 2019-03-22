@@ -21,6 +21,7 @@ final class CountryDetailsViewModel {
     var capital = BehaviorRelay<String>(value: "")
     var population = BehaviorRelay<String>(value: "")
     var borders = BehaviorRelay<String>(value: "")
+    var currencies = BehaviorRelay<String>(value: "")
     
     private let loadInProgress = BehaviorRelay<Bool>(value: false)
     let countriesRepo: CountriesRepository
@@ -50,8 +51,13 @@ final class CountryDetailsViewModel {
                         }
                         resultBorders = String(resultBorders.dropLast(2))
                     }
-                    
                     self?.borders.accept(resultBorders)
+                    var currenciesString = "Currencies: "
+                    for currency in country.currencies {
+                        currenciesString += "\(currency.name), "
+                    }
+                    currenciesString = String(currenciesString.dropLast(2))
+                    self?.currencies.accept(currenciesString)
                 },
                 onError: { [weak self] error in
                     self?.loadInProgress.accept(false)

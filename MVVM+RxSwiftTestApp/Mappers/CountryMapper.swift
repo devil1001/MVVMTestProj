@@ -14,6 +14,7 @@ final class CountryMapper {
                        capital: dto.capital ?? "",
                        population: dto.population ?? 0,
                        borders: dto.borders,
-                       cioc: dto.cioc)
+                       cioc: dto.cioc,
+                       currencies: dto.currencies.map { CurrencyMapper.map(with: $0) })
     }
 }

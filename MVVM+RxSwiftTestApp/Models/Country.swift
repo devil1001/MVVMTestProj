@@ -14,4 +14,5 @@ struct Country {
     var population: Int
     var borders: [String]
     var cioc: String?
+    var currencies: [Currency]
 }
