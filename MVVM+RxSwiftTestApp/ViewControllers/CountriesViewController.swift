@@ -16,12 +16,15 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
     private let disposeBag = DisposeBag()
     private let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     private var selectedCountry: String?
+    private var refreshHandler: RefreshHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
+        bindRefreshControl()
         setupCellTapHandling()
         viewModel.getCountries()
+        viewModel.startDetectRefresh()
     }
     
     func bindViewModel() {
@@ -52,7 +55,17 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
         
         viewModel
             .onShowLoadingHud
-            .map { [weak self] in self?.setLoadingHud(visible: $0) }
+            .map { [weak self] in
+                self?.setLoadingHud(visible: $0)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .finishRefres
+            .map { [weak self] in
+                self?.refreshHandler?.end()
+            }
             .subscribe()
             .disposed(by: disposeBag)
     }
@@ -80,6 +93,14 @@ final class CountriesViewController: UIViewController, ErrorDialogPresenter {
                     }
                 }
             )
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindRefreshControl() {
+        refreshHandler = RefreshHandler(view: tableView)
+        refreshHandler?.refresh
+            .startWith(())
+            .bind(to: viewModel.onRefresh)
             .disposed(by: disposeBag)
     }
     

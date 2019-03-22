@@ -27,8 +27,11 @@ final class CountriesTableViewModel {
     }
     
     let onShowError = PublishSubject<ErrorAlert>()
+    let onRefresh = PublishSubject<Void>()
+    let finishRefres = PublishSubject<Void>()
     let countriesRepo: CountriesRepository
     let disposeBag = DisposeBag()
+    var downloadDisposeBag = DisposeBag()
     
     private let loadInProgress = BehaviorRelay(value: false)
     private let cells = BehaviorRelay<[CountryCellType]>(value: [])
@@ -39,12 +42,26 @@ final class CountriesTableViewModel {
     
     func getCountries() {
         loadInProgress.accept(true)
-        
+        downloadCountries()
+    }
+    
+    func startDetectRefresh() {
+        onRefresh.subscribe(
+            onNext: { [weak self] _ in
+                self?.downloadCountries()
+            }
+            )
+            .disposed(by: disposeBag)
+    }
+    
+    private func downloadCountries() {
+        downloadDisposeBag = DisposeBag()
         countriesRepo
             .getCountries()
             .subscribe(
                 onNext: { [weak self] countries in
                     self?.loadInProgress.accept(false)
+                    self?.finishRefres.onNext(())
                     guard countries.count > 0 else {
                         self?.cells.accept([.empty])
                         return
@@ -62,6 +79,6 @@ final class CountriesTableViewModel {
                     self?.onShowError.onNext(okAlert)
                 }
             )
-            .disposed(by: disposeBag)
+            .disposed(by: downloadDisposeBag)
     }
 }
